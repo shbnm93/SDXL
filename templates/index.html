@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Image Viewer</title>
+   <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}"/>
+ </head>
+ <body>
+   <div class="sidebar">
+     <h2>Stable Diffusion</h2>
+     <label for="prompt">Prompt:</label>
+     <input type="text" id="prompt" placeholder="A toy panda standing on a pile of broccoli" />
+
+     <label for="negative-prompt">Negative Prompt:</label>
+     <input
+       type="text"
+       id="negative-prompt"
+       placeholder="text, cropped, out of frame, worst quality"
+     />
+
+     <button onclick="fetchImage()">Show Image</button>
+
+     <h3>Select Model</h3>
+     <div class="model-selection">
+       <img
+         src="{{url_for('static', filename='SDXL.gif')}}"
+         alt="SDXL"
+         class="model-selected"
+         api_link="sdxl1.0-txt2img"
+       />
+       <img
+         src="{{url_for('static', filename='Copax Timeless.gif')}}"
+         alt="Copax Timeless SDXL"
+         api_link="sdxl1.0-timeless"
+       />
+       <img
+         src="{{url_for('static', filename='Dreamshaper SDXL.gif')}}"
+         alt="Dreamshaper SDXL"
+         api_link="sdxl1.0-dreamshaper"
+       />
+       <img
+         src="{{url_for('static', filename='IKEA Instructions SDXL.gif')}}"
+         alt="ikea-instructions-lora-sdxl"
+         api_link="ostris-ikea-instructions-lora-sdxl"
+       />
+     </div>
+   </div>
+
+   <div class="image-container">
+     <img id="display-image" src="{{url_for('static', filename='small_sd.webp')}}" alt="Image Display" />
+   </div>
+
+   <script src="{{ url_for('static',filename='script.js') }}"></script>
+ </body>
+</html>
